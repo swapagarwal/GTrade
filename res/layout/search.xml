@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:fillViewport="true">
+  
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dip">
+    <EditText android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="5dip"
+          android:singleLine="true"
+          android:hint="Search..."
+          android:id="@+id/etSearch"/>
+    
+    <Button android:id="@+id/btnSearch"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:text="Search"/>
+
+    <TextView
+        android:id="@+id/tvSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""/>
+
+  </LinearLayout>
+</ScrollView>

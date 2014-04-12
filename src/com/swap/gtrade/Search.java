@@ -22,27 +22,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Login extends Activity{
-	Button btnLogin;
-	EditText username,password;
+public class Search extends Activity{
+	Button btnSearch;
+	EditText etSearch;
 	TextView tv;
 	HttpPost httppost;
     StringBuffer buffer;
     HttpResponse response;
     HttpClient httpclient;
     List<NameValuePair> nameValuePairs;
-	
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.login);
+		setContentView(R.layout.search);
 		
-		username=(EditText) findViewById(R.id.etusername);
-		password=(EditText) findViewById(R.id.etpassword);
-		tv=(TextView) findViewById(R.id.textView1);
-		btnLogin=(Button) findViewById(R.id.btnLogin);
-		btnLogin.setOnClickListener(new OnClickListener() {
+		etSearch=(EditText) findViewById(R.id.etSearch);
+		tv=(TextView) findViewById(R.id.tvSearch);
+		btnSearch=(Button) findViewById(R.id.btnSearch);
+		btnSearch.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
@@ -56,12 +55,11 @@ public class Login extends Activity{
                          try{
                              
                              httpclient=new DefaultHttpClient();
-                             httppost= new HttpPost("http://10.0.2.2/android/login.php"); // make sure the url is correct.
+                             httppost= new HttpPost("http://10.0.2.2/android/search.php"); // make sure the url is correct.
                              //add your data
                              nameValuePairs = new ArrayList<NameValuePair>(2);
                              // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
-                             nameValuePairs.add(new BasicNameValuePair("username",username.getText().toString().trim()));  // $Edittext_value = $_POST['Edittext_value'];
-                             nameValuePairs.add(new BasicNameValuePair("password",password.getText().toString().trim()));
+                             nameValuePairs.add(new BasicNameValuePair("search",etSearch.getText().toString().trim()));  // $Edittext_value = $_POST['Edittext_value'];
                              httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                              //Execute HTTP Post Request
                              response=httpclient.execute(httppost);

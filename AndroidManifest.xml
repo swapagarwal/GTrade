@@ -25,6 +25,7 @@
         </activity>
         <activity android:name="com.swap.gtrade.Login"></activity>
         <activity android:name="com.swap.gtrade.Item"></activity>
+        <activity android:name="com.swap.gtrade.Search"></activity>
     </application>
 
 </manifest>

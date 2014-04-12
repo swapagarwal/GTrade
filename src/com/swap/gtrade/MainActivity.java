@@ -14,24 +14,17 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.os.Build;
 
 public class MainActivity extends Activity {
-	Button b,btnLogin;
+	Button b,btnLogin,btnSearch;
     EditText et;
     TextView tv;
     HttpPost httppost;
@@ -104,6 +97,16 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent iLogin = new Intent(MainActivity.this,Login.class);
 				startActivity(iLogin);
+			}
+		});
+        btnSearch = (Button)findViewById(R.id.button3);
+        btnSearch.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				Intent iSearch = new Intent(MainActivity.this,Search.class);
+				startActivity(iSearch);
 			}
 		});
     }
