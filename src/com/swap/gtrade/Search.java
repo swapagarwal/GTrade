@@ -55,7 +55,7 @@ public class Search extends Activity{
                          try{
                              
                              httpclient=new DefaultHttpClient();
-                             httppost= new HttpPost("http://"+getString(R.string.SERVER_IP)+"/android/search.php"); // make sure the url is correct.
+                             httppost= new HttpPost(getString(R.string.SERVER_IP)+"search.php"); // make sure the url is correct.
                              //add your data
                              nameValuePairs = new ArrayList<NameValuePair>(2);
                              // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,

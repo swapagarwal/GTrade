@@ -56,7 +56,7 @@ public class MainActivity extends Activity {
                          try{
                              
                              httpclient=new DefaultHttpClient();
-                             httppost= new HttpPost("http://"+getString(R.string.SERVER_IP)+"/android/connection.php"); // make sure the url is correct.
+                             httppost= new HttpPost(getString(R.string.SERVER_IP)+"connection.php"); // make sure the url is correct.
                              //add your data
                              nameValuePairs = new ArrayList<NameValuePair>(1);
                              // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
