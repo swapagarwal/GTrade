@@ -4,5 +4,6 @@
     <string name="app_name">GTrade</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+	<string name="SERVER_IP">192.168.165.1</string>
+	
 </resources>

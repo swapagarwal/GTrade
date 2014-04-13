@@ -1,8 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:fillViewport="true">
+  
+  <LinearLayout
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:layout_height="wrap_content"
+    android:padding="10dip">
 
-</LinearLayout>
+      <TextView
+          android:id="@+id/tvItemName"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Item Name"
+          android:textAppearance="?android:attr/textAppearanceLarge" />
+
+      <LinearLayout 
+		  android:orientation="horizontal"
+		  android:layout_width="match_parent"
+		  android:layout_height="wrap_content"
+		  android:weightSum="4">
+
+		  	<ImageView
+		  	    android:id="@+id/ivImage"
+		  	    android:layout_width="200dp"
+		  	    android:layout_height="200dp"
+		  	    android:src="@drawable/ic_launcher" />
+			
+		  	<LinearLayout 
+		  	    android:orientation="vertical"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content">
+					<TextView
+				  	    android:id="@+id/tvQuantity"
+				  	    android:layout_width="wrap_content"
+				  	    android:layout_height="wrap_content"
+				  	    android:text="Quantity"
+				  	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				  	<TextView
+				  	    android:id="@+id/tvCost"
+				  	    android:layout_width="wrap_content"
+				  	    android:layout_height="wrap_content"
+				  	    android:text="Cost"
+				  	    android:textAppearance="?android:attr/textAppearanceMedium" />
+		  	    		  	    
+				  	<TextView
+				        android:id="@+id/tvSeller"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="Seller"
+				        android:textAppearance="?android:attr/textAppearanceMedium" />
+		  	</LinearLayout>
+		  	          
+      </LinearLayout>
+
+      <TextView
+          android:id="@+id/tvDescription"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:text="Description"
+          android:singleLine="false"
+          android:textAppearance="?android:attr/textAppearanceMedium" />
+
+      <Button
+          android:id="@+id/btnBuy"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:text="Buy Now!" />
+      
+  </LinearLayout>
+</ScrollView>

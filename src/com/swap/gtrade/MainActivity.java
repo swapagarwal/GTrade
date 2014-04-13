@@ -22,10 +22,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
-	Button b,btnLogin,btnSearch;
-    EditText et;
+	Button b,btnLogin,btnSearch,btnItem;
+    EditText et,etItem;
     TextView tv;
     HttpPost httppost;
     StringBuffer buffer;
@@ -55,7 +56,7 @@ public class MainActivity extends Activity {
                          try{
                              
                              httpclient=new DefaultHttpClient();
-                             httppost= new HttpPost("http://10.0.2.2/android/connection.php"); // make sure the url is correct.
+                             httppost= new HttpPost("http://"+getString(R.string.SERVER_IP)+"/android/connection.php"); // make sure the url is correct.
                              //add your data
                              nameValuePairs = new ArrayList<NameValuePair>(1);
                              // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
@@ -107,6 +108,24 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent iSearch = new Intent(MainActivity.this,Search.class);
 				startActivity(iSearch);
+			}
+		});
+        etItem=(EditText) findViewById(R.id.editText1);
+        btnItem = (Button)findViewById(R.id.button4);
+        btnItem.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				if(etItem.getText().toString() != null && !etItem.getText().toString().equals("")){
+					Intent iItem = new Intent(MainActivity.this,Item.class);
+					iItem.putExtra("ITEM_ID", etItem.getText().toString());
+					startActivity(iItem);
+				}
+				else{
+					Toast.makeText(getApplicationContext(), "Please enter a item id.", Toast.LENGTH_SHORT).show();
+				}
+				
 			}
 		});
     }
