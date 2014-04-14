@@ -12,15 +12,22 @@ if(isset($_GET['user_nm'])){
 		  {
 		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		  }
-
-		$query="INSERT INTO `watch_list`(`user_nm`,`item_id`) VALUES ('$user_nm','$item_id')";
-		//echo $query;
+		
+		$query="SELECT * FROM `watch_list` WHERE user_nm ='$user_nm' and item_id='$item_id'";
 		$result=mysqli_query($con,$query);
-		if($result){
-			echo "Added to watch list.";
+		if(mysqli_num_rows($result)){
+			echo "Already in watch list.";
 		}
 		else{
-			echo "Couldn't add to watch list.";
+			$query="INSERT INTO `watch_list`(`user_nm`,`item_id`) VALUES ('$user_nm','$item_id')";
+			//echo $query;
+			$result=mysqli_query($con,$query);
+			if($result){
+				echo "Added to watch list.";
+			}
+			else{
+				echo "Couldn't add to watch list.";
+			}
 		}
 		mysqli_close($con);
 	}	

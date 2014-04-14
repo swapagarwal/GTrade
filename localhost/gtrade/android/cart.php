@@ -13,14 +13,21 @@ if(isset($_GET['user_nm'])){
 		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 		  }
 
-		$query="INSERT INTO `cart`(`user_nm`,`qty`,`item_id`) VALUES ('$user_nm',1,$item_id)";
-		//echo $query;
+		$query="SELECT * FROM `cart` WHERE user_nm ='$user_nm' and item_id='$item_id'";
 		$result=mysqli_query($con,$query);
-		if($result){
-			echo "Added to cart.";
+		if(mysqli_num_rows($result)){
+			echo "Already in cart.";
 		}
 		else{
-			echo "Couldn't add to cart.";
+			$query="INSERT INTO `cart`(`user_nm`,`qty`,`item_id`) VALUES ('$user_nm',1,$item_id)";
+			//echo $query;
+			$result=mysqli_query($con,$query);
+			if($result){
+				echo "Added to cart.";
+			}
+			else{
+				echo "Couldn't add to cart.";
+			}
 		}
 		mysqli_close($con);
 	}
