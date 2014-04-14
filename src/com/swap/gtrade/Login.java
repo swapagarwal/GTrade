@@ -15,12 +15,15 @@ import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Login extends Activity{
 	Button btnLogin;
@@ -73,6 +76,14 @@ public class Login extends Activity{
                                     public void run() {
                                         p.dismiss();
                                          tv.setText("Response from PHP : " + response);
+                                         SharedPreferences sf = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                         if(response.contains("Incorrect")){
+                                        	 sf.edit().putString("user_nm", "").commit();
+                                         }
+                                         else{
+                                             sf.edit().putString("user_nm", response.substring(8)).commit();
+                                         }
+                                         //Toast.makeText(Login.this, PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("user_nm", ""), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                              

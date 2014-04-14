@@ -70,7 +70,12 @@
           android:id="@+id/btnBuy"
           android:layout_width="fill_parent"
           android:layout_height="wrap_content"
-          android:text="Buy Now!" />
+          android:text="Add to Cart" />
+      <Button
+          android:id="@+id/btnWatch"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:text="Add to Watchlist" />
       
   </LinearLayout>
 </ScrollView>

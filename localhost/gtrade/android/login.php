@@ -17,7 +17,7 @@ if(mysqli_num_rows($result)==0){
 }
 else{
 	$row = mysqli_fetch_array($result);
-	echo "Welcome ".$row{'user_nm'}."!";
+	echo "Welcome ".$row{'user_nm'};
 	//print_r($row);
 }
 mysqli_close($con);
