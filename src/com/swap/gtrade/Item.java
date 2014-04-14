@@ -17,7 +17,10 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -101,6 +104,15 @@ public class Item extends Activity{
 									tvSeller.setText("Seller: "+seller);
 									String description = object.getString("description");
 	                                tvDescription.setText("Description:\n"+description);
+	                                String img = object.getString("image");
+	                                //getString(R.string.IMAGE_FOLDER)+pic_loc
+	                                try{
+	                                    byte [] encodeByte=Base64.decode(img,Base64.DEFAULT);
+	                                    Bitmap bitmap=BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+	                                    ivImage.setImageBitmap(bitmap);
+	                                  }catch(Exception e){
+	                                    e.getMessage();
+	                                  }
 								} catch (JSONException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();

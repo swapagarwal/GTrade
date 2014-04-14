@@ -17,6 +17,10 @@ if(mysqli_num_rows($result)==0){
 else{
 	$row = mysqli_fetch_array($result);
 	//echo $item_id;
+	$thumbnail = file_get_contents("http://localhost/gtrade/upload/".$row['pic_loc']);
+	$encoded = base64_encode($thumbnail);
+	header('Content-Type: application/json');
+	$row['image']=$encoded;
 	echo json_encode($row);
 	//print_r($row);
 }
