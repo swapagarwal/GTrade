@@ -27,6 +27,8 @@
         <activity android:name="com.swap.gtrade.Item"></activity>
         <activity android:name="com.swap.gtrade.Search"></activity>
         <activity android:name="com.swap.gtrade.Auction"></activity>
+        <activity android:name="com.swap.gtrade.Cart"></activity>
+        <activity android:name="com.swap.gtrade.WatchList"></activity>
     </application>
 
 </manifest>

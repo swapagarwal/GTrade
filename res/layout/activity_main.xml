@@ -15,7 +15,7 @@
 	    android:id="@+id/EditText01"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:singleLine="true">
+	    android:singleLine="true"> 
 	</EditText>
 	<Button
 	    android:text="Test Connection!"
@@ -41,6 +41,26 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:text="Search" />
+
+	<LinearLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    >
+		<Button
+		    android:id="@+id/button1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="View Cart" />
+
+		<Button
+		    android:id="@+id/button6"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="View Watchlist" />
+
+	</LinearLayout>
+
 	<LinearLayout
 	    android:orientation="horizontal"
 	    android:layout_width="fill_parent"

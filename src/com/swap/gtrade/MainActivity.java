@@ -17,6 +17,10 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -25,7 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-	Button b,btnLogin,btnSearch,btnItem,btnAuction;
+	Button b,btnLogin,btnSearch,btnItem,btnAuction,btnCart,btnList;
     EditText et,etItem,etAuction;
     TextView tv;
     HttpPost httppost;
@@ -152,5 +156,57 @@ public class MainActivity extends Activity {
 				
 			}
 		});
+        btnCart = (Button)findViewById(R.id.button1);
+        btnCart.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				if(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("user_nm", "").equals("")){
+					Toast.makeText(MainActivity.this, "Please login first.", Toast.LENGTH_SHORT).show();
+				}
+				else{
+					Intent iCart = new Intent(MainActivity.this,Cart.class);
+					startActivity(iCart);
+				}
+				
+			}
+		});
+        btnList = (Button)findViewById(R.id.button6);
+        btnList.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				if(PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("user_nm", "").equals("")){
+					Toast.makeText(MainActivity.this, "Please login first.", Toast.LENGTH_SHORT).show();
+				}
+				else{
+					Intent iList = new Intent(MainActivity.this,WatchList.class);
+					startActivity(iList);
+				}
+				
+			}
+		});
+        
+
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main, menu);
+        return true;
+    }
+    
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.action_settings:
+        startActivity(new Intent(this, Login.class));
+        return true;
+        default:
+        return super.onOptionsItemSelected(item);
+        }
     }
 }
