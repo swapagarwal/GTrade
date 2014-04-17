@@ -12,25 +12,48 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.location.GpsStatus.NmeaListener;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class Search extends Activity{
+public class Search extends ListActivity{
 	Button btnSearch;
 	EditText etSearch;
 	TextView tv;
+	ListView result;
 	HttpPost httppost;
     StringBuffer buffer;
     HttpResponse response;
     HttpClient httpclient;
     List<NameValuePair> nameValuePairs;
+    String item_nm[];//={"First Item","Second Item","Third Item"};
+    String item_id[];//={"1","2","3"};
+    
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		// TODO Auto-generated method stub
+		super.onListItemClick(l, v, position, id);
+		Intent iItem = new Intent(Search.this,Item.class);
+		iItem.putExtra("ITEM_ID", item_id[position].toString());
+		startActivity(iItem);
+	}
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +63,8 @@ public class Search extends Activity{
 		
 		etSearch=(EditText) findViewById(R.id.etSearch);
 		tv=(TextView) findViewById(R.id.tvSearch);
+		result=getListView();
+		//setListAdapter(new ArrayAdapter<String>(Search.this, android.R.layout.simple_list_item_1, item_nm));
 		btnSearch=(Button) findViewById(R.id.btnSearch);
 		btnSearch.setOnClickListener(new OnClickListener() {
 			
@@ -70,7 +95,32 @@ public class Search extends Activity{
                              runOnUiThread(new Runnable() {
                                     public void run() {
                                         p.dismiss();
-                                         tv.setText("Response from PHP : " + response);
+                                         if(response.contains("No results found.")){
+                                        	 tv.setText("Response from PHP : " + response);
+                                        	 item_nm=new String[0];
+          									 item_id=new String[0];
+          									setListAdapter(new ArrayAdapter<String>(Search.this, android.R.layout.simple_list_item_1, item_nm));
+                                         }
+                                         else{
+                                        	 tv.setText("");
+                                        	 JSONArray jArray;
+                                        	 JSONObject jObject;
+             								try {
+             									jArray = new JSONArray(response);
+             									item_nm=new String[jArray.length()];
+             									item_id=new String[jArray.length()];
+             									for(int i=0;i<jArray.length();i++){
+             										jObject = jArray.getJSONObject(i);
+             										item_nm[i]=jObject.getString("item_nm");
+             										item_id[i]=jObject.getString("item_id");
+             									}
+             									setListAdapter(new ArrayAdapter<String>(Search.this, android.R.layout.simple_list_item_1, item_nm));
+             								} catch (JSONException e) {
+             									// TODO Auto-generated catch block
+             									e.printStackTrace();
+             									Toast.makeText(Search.this, "JSON exception.", Toast.LENGTH_SHORT).show();
+             								}
+                                         }
                                     }
                                 });
                              

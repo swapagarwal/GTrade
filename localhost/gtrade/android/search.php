@@ -15,9 +15,12 @@ if(mysqli_num_rows($result)==0){
 	echo "No results found.";
 }
 else{
-	$row = mysqli_fetch_array($result);
-	echo mysqli_num_rows($result)." results found...";
-	//print_r($row);
+	//echo mysqli_num_rows($result)." results found...";
+	$results=array();
+	while($row = mysqli_fetch_array($result)){
+		$results[]=array('item_nm'=>$row['item_nm'],'item_id'=>$row['item_id']);
+	}
+	echo json_encode($results);
 }
 mysqli_close($con);
 ?>

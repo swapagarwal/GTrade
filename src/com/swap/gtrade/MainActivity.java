@@ -25,8 +25,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-	Button b,btnLogin,btnSearch,btnItem;
-    EditText et,etItem;
+	Button b,btnLogin,btnSearch,btnItem,btnAuction;
+    EditText et,etItem,etAuction;
     TextView tv;
     HttpPost httppost;
     StringBuffer buffer;
@@ -71,7 +71,13 @@ public class MainActivity extends Activity {
                              runOnUiThread(new Runnable() {
                                     public void run() {
                                         p.dismiss();
-                                         tv.setText("Response from PHP : " + response);
+                                         if(et.getText().toString().equals(response)){
+                                        	 tv.setText("Response from PHP : " + response+" (Connected!)");
+                                         }
+                                         else{
+                                        	 tv.setText("Response from PHP : " + response+" (Not connected!)");
+                                         }
+                                         
                                     }
                                 });
                              
@@ -121,6 +127,24 @@ public class MainActivity extends Activity {
 					Intent iItem = new Intent(MainActivity.this,Item.class);
 					iItem.putExtra("ITEM_ID", etItem.getText().toString());
 					startActivity(iItem);
+				}
+				else{
+					Toast.makeText(getApplicationContext(), "Please enter a item id.", Toast.LENGTH_SHORT).show();
+				}
+				
+			}
+		});
+        etAuction=(EditText) findViewById(R.id.editText2);
+        btnAuction = (Button)findViewById(R.id.button5);
+        btnAuction.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				if(etAuction.getText().toString() != null && !etAuction.getText().toString().equals("")){
+					Intent iAuction = new Intent(MainActivity.this,Auction.class);
+					iAuction.putExtra("ITEM_ID", etAuction.getText().toString());
+					startActivity(iAuction);
 				}
 				else{
 					Toast.makeText(getApplicationContext(), "Please enter a item id.", Toast.LENGTH_SHORT).show();

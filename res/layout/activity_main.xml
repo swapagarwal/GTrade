@@ -18,7 +18,7 @@
 	    android:singleLine="true">
 	</EditText>
 	<Button
-	    android:text="Send to php side"
+	    android:text="Test Connection!"
 	    android:id="@+id/Button01"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content">
@@ -29,12 +29,6 @@
 	    android:layout_height="wrap_content"
 	    android:text=""
 	    />
-	
-	<Button
-	    android:id="@+id/button1"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="Register" />
 	
 	<Button
 	    android:id="@+id/button2"
@@ -50,20 +44,40 @@
 	<LinearLayout
 	    android:orientation="horizontal"
 	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
+	    android:layout_height="wrap_content"
 	    >
 		
 		<EditText
 		    android:id="@+id/editText1"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:ems="10"
+		    android:ems="8"
 		    android:hint="Enter item id..."/>
 		<Button
 		    android:id="@+id/button4"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:text="View Item" />
+		
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    >
+		
+		<EditText
+		    android:id="@+id/editText2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:ems="8"
+		    android:hint="Enter item id..."/>
+		<Button
+		    android:id="@+id/button5"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="View Auction" />
 		
 	</LinearLayout>
 	</LinearLayout>

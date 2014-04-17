@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:fillViewport="true">
+  
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dip">
+
+      <TextView
+          android:id="@+id/tvItemNamea"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Item Name"
+          android:textAppearance="?android:attr/textAppearanceLarge" />
+
+      <LinearLayout 
+		  android:orientation="horizontal"
+		  android:layout_width="match_parent"
+		  android:layout_height="wrap_content"
+		  android:weightSum="4">
+
+		  	<ImageView
+		  	    android:id="@+id/ivImagea"
+		  	    android:layout_width="200dp"
+		  	    android:layout_height="200dp"
+		  	    android:src="@drawable/ic_launcher" />
+			
+		  	<LinearLayout 
+		  	    android:orientation="vertical"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content">
+					<TextView
+				  	    android:id="@+id/tvQuantitya"
+				  	    android:layout_width="wrap_content"
+				  	    android:layout_height="wrap_content"
+				  	    android:text="Quantity"
+				  	    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+				  	<TextView
+				  	    android:id="@+id/tvCosta"
+				  	    android:layout_width="wrap_content"
+				  	    android:layout_height="wrap_content"
+				  	    android:text="Bid"
+				  	    android:textAppearance="?android:attr/textAppearanceMedium" />
+		  	    		  	    
+				  	<TextView
+				        android:id="@+id/tvSellera"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="Seller"
+				        android:textAppearance="?android:attr/textAppearanceMedium" />
+		  	</LinearLayout>
+		  	          
+      </LinearLayout>
+
+      <TextView
+          android:id="@+id/tvDescriptiona"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:text="Description"
+          android:singleLine="false"
+          android:textAppearance="?android:attr/textAppearanceMedium" />
+
+      <LinearLayout 
+		  android:orientation="horizontal"
+		  android:layout_width="fill_parent"
+		  android:layout_height="wrap_content">
+
+		  	<EditText
+		  	    android:id="@+id/etbid"
+		  	    android:layout_width="wrap_content"
+		  	    android:layout_height="wrap_content"
+		  	    android:ems="8"
+		  	    android:hint="Enter a bid..."
+		  	    android:inputType="number" />
+
+	      <Button
+	          android:id="@+id/btnBid"
+	          android:layout_width="fill_parent"
+	          android:layout_height="wrap_content"
+	          android:text="Place Bid" />
+	  </LinearLayout>
+      
+  </LinearLayout>
+</ScrollView>
