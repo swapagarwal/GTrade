@@ -23,9 +23,11 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class WatchList extends ListActivity{
+	TextView tvlist;
 	HttpPost httppost;
     StringBuffer buffer;
     HttpResponse response;
@@ -57,8 +59,7 @@ public class WatchList extends ListActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.cart);
 		
-		ListView listView=getListView();
-        listView.setTextFilterEnabled(true);
+		tvlist=(TextView) findViewById(R.id.tvList);
 		
          try{
              
@@ -81,6 +82,12 @@ public class WatchList extends ListActivity{
                     	JSONObject jObject;
 						try {
 							jArray = new JSONArray(response);
+							if(jArray.length()==0){
+								tvlist.setText("Your watch list is empty.");
+							}
+							else{
+								tvlist.setText("");
+							}
 							item_nm=new String[jArray.length()];
 							item_id=new String[jArray.length()];
 							item_type=new String[jArray.length()];
