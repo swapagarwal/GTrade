@@ -46,13 +46,21 @@ public class Search extends ListActivity{
     List<NameValuePair> nameValuePairs;
     String item_nm[];//={"First Item","Second Item","Third Item"};
     String item_id[];//={"1","2","3"};
+    String item_type[];
     
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		// TODO Auto-generated method stub
 		super.onListItemClick(l, v, position, id);
-		Intent iItem = new Intent(Search.this,Item.class);
-		iItem.putExtra("ITEM_ID", item_id[position].toString());
-		startActivity(iItem);
+		if(item_type[position].equalsIgnoreCase("auction")){
+			Intent iAuction = new Intent(Search.this,Auction.class);
+			iAuction.putExtra("ITEM_ID", item_id[position].toString());
+			startActivity(iAuction);
+		}
+		else{
+			Intent iItem = new Intent(Search.this,Item.class);
+			iItem.putExtra("ITEM_ID", item_id[position].toString());
+			startActivity(iItem);
+		}
 	}
     
 	@Override
@@ -99,6 +107,7 @@ public class Search extends ListActivity{
                                         	 tv.setText("Response from PHP : " + response);
                                         	 item_nm=new String[0];
           									 item_id=new String[0];
+          									 item_type=new String[0];
           									setListAdapter(new ArrayAdapter<String>(Search.this, android.R.layout.simple_list_item_1, item_nm));
                                          }
                                          else{
@@ -109,10 +118,12 @@ public class Search extends ListActivity{
              									jArray = new JSONArray(response);
              									item_nm=new String[jArray.length()];
              									item_id=new String[jArray.length()];
+             									item_type=new String[jArray.length()];
              									for(int i=0;i<jArray.length();i++){
              										jObject = jArray.getJSONObject(i);
              										item_nm[i]=jObject.getString("item_nm");
              										item_id[i]=jObject.getString("item_id");
+             										item_type[i]=jObject.getString("type");
              									}
              									setListAdapter(new ArrayAdapter<String>(Search.this, android.R.layout.simple_list_item_1, item_nm));
              								} catch (JSONException e) {

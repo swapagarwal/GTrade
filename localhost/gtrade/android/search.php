@@ -18,7 +18,7 @@ else{
 	//echo mysqli_num_rows($result)." results found...";
 	$results=array();
 	while($row = mysqli_fetch_array($result)){
-		$results[]=array('item_nm'=>$row['item_nm'],'item_id'=>$row['item_id']);
+		$results[]=array('item_nm'=>$row['item_nm'],'item_id'=>$row['item_id'],'type'=>$row['type']);
 	}
 	echo json_encode($results);
 }
